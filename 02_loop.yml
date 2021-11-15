@@ -1,7 +1,7 @@
 
 ---
 - hosts: linuxservers
-  become: yes
+  become: true
 
   tasks:
     - name: Create dir /mnt/resource/
@@ -23,11 +23,10 @@
 
     - name: Wait for downloads
       async_status:
-        jid: "{{item.ansible_job_id}}"
+        jid: "{{ item.ansible_job_id }}"
         mode: status
       retries: 300
       delay: 1
       loop: "{{ download_loop.results }}"
       register: async_loop_jobs
       until: async_loop_jobs.finished
-
