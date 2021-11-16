@@ -2,8 +2,7 @@
 - hosts: tag_solution_webserver_tsh
   become: yes
   vars:
-    websiteheader: "Ansible Playbook"
-    websiteauthor: "Torben Steen Hansen"
+
   tasks:
   - name: Install Apache
     dnf:
